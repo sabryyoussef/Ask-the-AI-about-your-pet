@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/heroicons@1.0.6/outline/heroicons.min.js"></script>
+
+    <style>
+        .bg-cover {
+            background-image: url('/static/images/vetclinic.png'); /* Ensure the path is correct */
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* Ensure it takes the full viewport height */
+        }
+    </style>
+</head>
+<body class="bg-cover font-sans text-white">
+
+    <div class="min-h-screen flex flex-col items-center justify-center bg-opacity-50 bg-gray-900">
+        <div class="w-full max-w-6xl p-8 mt-8 bg-white rounded-xl shadow-lg text-gray-800">
+
+            <!-- Header Section -->
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-extrabold mb-2">Welcome, John Doe</h1>
+                <p class="text-lg text-gray-600">Manage your pets' health and appointments</p>
+            </div>
+
+            <!-- Dashboard Content (Grid Layout) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Profile Summary Card -->
+                <div class="bg-blue-100 p-6 rounded-xl shadow-md text-center hover:shadow-xl transition duration-300">
+                    <div class="flex justify-center mb-4">
+                        <svg class="h-10 w-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 18a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 110-16 8 8 0 010 16z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Profile Summary</h2>
+                    <p><strong>Name:</strong> John Doe</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> +1234567890</p>
+                </div>
+
+                <!-- Appointments Overview Card -->
+                <div class="bg-yellow-100 p-6 rounded-xl shadow-md text-center hover:shadow-xl transition duration-300">
+                    <div class="flex justify-center mb-4">
+                        <svg class="h-10 w-10 text-yellow-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h3V1a1 1 0 112 0v1h3a1 1 0 011 1v3h1a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h1V3z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Upcoming Appointments</h2>
+                    <ul class="text-left text-gray-700">
+                        <li>Pet 1 - Appointment Date: March 3, 2025</li>
+                        <li>Pet 2 - Appointment Date: March 10, 2025</li>
+                        <li>Pet 3 - Appointment Date: March 17, 2025</li>
+                    </ul>
+                    <div class="mt-4">
+                        <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <span class="text-sm font-semibold inline-block py-1">Appointment Progress</span>
+                            </div>
+                            <div class="flex mb-4">
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pet Health Records Card -->
+                <div class="bg-green-100 p-6 rounded-xl shadow-md text-center hover:shadow-xl transition duration-300">
+                    <div class="flex justify-center mb-4">
+                        <svg class="h-10 w-10 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M15 4a3 3 0 00-3 3v4a3 3 0 00-3 3h-2a3 3 0 00-3-3V7a3 3 0 00-3-3H5a5 5 0 015 5v4h2V9a3 3 0 003-3h2a3 3 0 00-3-3z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Pet Health Records</h2>
+                    <ul class="text-left text-gray-700">
+                        <li>Pet 1 - Healthy, no current issues</li>
+                        <li>Pet 2 - Vaccinated and regularly checked</li>
+                        <li>Pet 3 - Diagnosed with mild arthritis</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Buttons in One Line -->
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="{% url 'logout' %}" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md transform hover:scale-105">
+                    Logout
+                </a>
+                <a href="{% url 'odoo_login' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md transform hover:scale-105">
+                    Odoo Login
+                </a>
+                <a href="{% url 'ai_chat' %}" class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md transform hover:scale-105">
+                    AI Chat
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

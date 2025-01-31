@@ -1,0 +1,44 @@
+<!-- odoo_integration/templates/odoo_integration/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoo Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-green-500 to-blue-600 min-h-screen flex items-center justify-center">
+    <div class="bg-white shadow-2xl rounded-xl p-8 w-full max-w-sm text-center">
+        <h1 class="text-3xl font-extrabold text-gray-800 mb-4">Login to Odoo</h1>
+        <p class="text-gray-600 mb-6">Enter your credentials to access your Odoo dashboard</p>
+        
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            
+            <!-- Username Field -->
+            <div class="relative">
+                <label for="username" class="block text-gray-700 font-medium mb-1">Username</label>
+                <input type="text" id="username" name="username" required 
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+            </div>
+            
+            <!-- Password Field -->
+            <div class="relative">
+                <label for="password" class="block text-gray-700 font-medium mb-1">Password</label>
+                <input type="password" id="password" name="password" required 
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md">
+                Login
+            </button>
+        </form>
+        
+        <!-- Forgot Password Link -->
+        <p class="text-gray-600 mt-4">
+            <a href="#" class="text-green-500 hover:underline">Forgot your password?</a>
+        </p>
+    </div>
+</body>
+</html>

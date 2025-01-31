@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Pet Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-cover {
+            background-image: url('/static/images/vetclinic.png');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-cover font-sans bg-opacity-50 bg-gray-900 min-h-screen flex flex-col items-center justify-center text-gray-800">
+    <div class="w-full max-w-4xl bg-white p-8 rounded-xl shadow-xl space-y-6">
+        <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-4">Ask the AI about your pet</h1>
+        <div class="space-y-4">
+            <!-- Chat Messages -->
+            <div id="chat-box" class="max-h-96 overflow-y-auto p-4 bg-gray-50 rounded-lg shadow-inner space-y-4">
+                <!-- Demo Messages -->
+                <div class="flex justify-start">
+                    <div class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg max-w-xs">
+                        Hi! How can I help you with your pet today?
+                    </div>
+                </div>
+            </div>
+            <!-- User Input -->
+            <form id="chat-form" class="flex space-x-4">
+                <input type="text" id="user_input" name="user_input" placeholder="Ask a question..." required
+                    class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300">
+                    Ask
+                </button>
+            </form>
+            <!-- Book Appointment Button -->
+            <div class="flex justify-center mt-4">
+                <a href="https://petspot1.odoo.com/appointment/1" target="_blank" 
+                   class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300">
+                    Book an Appointment
+                </a>
+            </div>
+             <!-- AI Consultation Button -->
+             <div class="flex justify-center mt-4">
+                <a href="http://localhost:3000/" target="_blank" 
+                   class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300">
+                    AI Consultation
+                </a>
+            </div>
+             <!-- Shopping Button -->
+             <div class="flex justify-center mt-4">
+                <a href="https://petspot1.odoo.com/shop" target="_blank" 
+                   class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300">
+                    Go to Shopping
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('chat-form').onsubmit = function(event) {
+            event.preventDefault();
+            const userInput = document.getElementById('user_input').value;
+            const chatBox = document.getElementById('chat-box');
+            
+            // Display user input in the chat box
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('flex', 'justify-end');
+            userMessage.innerHTML = `<div class="bg-green-600 text-white px-4 py-2 rounded-lg max-w-xs">${userInput}</div>`;
+            chatBox.appendChild(userMessage);
+
+            // Scroll to the bottom of the chat box
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Clear the input field
+            document.getElementById('user_input').value = '';
+
+            // Dummy data for questions and answers
+            const responses = {
+                "What is my next visit?": "Your next visit is on March 3rd, 2025 at 10:00 AM.",
+                "Where is your location?": "We are located at 123 Pet Care Street, Animal City.",
+                "Is the vaccine available?": "Yes, we have all the necessary vaccines for your pet.",
+                "What is your clinic's working hours?": "We are open Monday to Friday, 9:00 AM to 6:00 PM.",
+                "Do you offer emergency services?": "Yes, we offer emergency services 24/7."
+            };
+
+            // Check if the user input matches any predefined question
+            let aiResponse = "Sorry, I didn't understand that.";
+
+            // Look for a matching response
+            if (responses[userInput]) {
+                aiResponse = responses[userInput];
+            }
+
+            // Display the AI's response
+            const aiMessage = document.createElement('div');
+            aiMessage.classList.add('flex', 'justify-start');
+            aiMessage.innerHTML = `<div class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg max-w-xs">${aiResponse}</div>`;
+            chatBox.appendChild(aiMessage);
+            
+            // Scroll to the bottom of the chat box
+            chatBox.scrollTop = chatBox.scrollHeight;
+        };
+    </script>
+</body>
+</html>
