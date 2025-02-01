@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptoms Checker</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Symptoms Checker</h1>
+        <ul class="list-disc pl-5">
+            {% for symptom in symptoms %}
+                <li class="mb-2">{{ symptom.name }} - {{ symptom.category }}</li>
+            {% empty %}
+                <li>No symptoms available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
